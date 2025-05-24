@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Boat Ready To Travel Checklist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; background: #f9f9f9; }
+    h2 { color: #0077cc; text-align: center; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 10px 0; }
+    label { cursor: pointer; display: block; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 0 3px rgba(0,0,0,0.1); }
+    .hidden { display: none; }
+    button { margin-top: 20px; padding: 10px 15px; font-size: 16px; width: 100%; }
+  </style>
+</head>
+<body>
+
+  <h2>🚚 Boat Ready To Travel Checklist</h2>
+  <ul id="checklist">
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Trailer lights functional</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Safety chains connected</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Trailer hitch locked and pinned</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Tire pressure checked</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Emergency Brake Cable Latched</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Hand Brake Bar Disengauged</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Battery Disconnected</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Stern Straps (both) Attached</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Trailer Electrical Cable Plugged in and Locked</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Trolling Motor secured</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> All gear stored and covered</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Drotto Latch Secured</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Licenses and permits onboard</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Winch Hook Secured</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Tongue jack raised and secured</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Humminbird Units Covered and Secured</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Motor is locked upright and Side Movement Locks Installed</label></li>
+  </ul>
+
+  <button onclick="resetChecklist()">🔄 Reset Checklist</button>
+
+  <script>
+    function hideItem(checkbox) {
+      if (checkbox.checked) {
+        checkbox.parentElement.parentElement.classList.add("hidden");
+      }
+    }
+
+    function resetChecklist() {
+      const items = document.querySelectorAll("#checklist li");
+      items.forEach(item => {
+        item.classList.remove("hidden");
+        item.querySelector("input").checked = false;
+      });
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
