@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Boat Launch Checklist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; background: #f9f9f9; }
+    h2 { color: #0077cc; text-align: center; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 10px 0; }
+    label { cursor: pointer; display: block; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 0 3px rgba(0,0,0,0.1); }
+    .hidden { display: none; }
+    button { margin-top: 20px; padding: 10px 15px; font-size: 16px; width: 100%; }
+  </style>
+</head>
+<body>
+  <h2>🚀 Boat Launch Checklist</h2>
+  <ul id="checklist">
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Drain plug "IN"</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Transom Saver and Steering Restraints Removed</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Reset Trolling Motor Breaker if Turned Off</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Battery Switch Turned "ON"</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Remove Bow Winch Hook</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Untie Drotto Line</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Left and Right Stern Straps removed from back of boat</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Unstrap Trolling Motor</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Turn "ON" Power Switch to Target Lock</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Remove all covers on Live 360 and Humminbird Units</label></li>
+    <li><label><input type="checkbox" onchange="hideItem(this)"> Life Jacket(s) Ready</label></li>
+  </ul>
+
+  <button onclick="resetChecklist()">🔄 Reset Checklist</button>
+  <script>
+    function hideItem(checkbox) {
+      if (checkbox.checked) {
+        checkbox.parentElement.parentElement.classList.add("hidden");
+      }
+    }
+    function resetChecklist() {
+      const items = document.querySelectorAll("#checklist li");
+      items.forEach(item => {
+        item.classList.remove("hidden");
+        item.querySelector("input").checked = false;
+      });
+    }
+  </script>
+</body>
+</html>
